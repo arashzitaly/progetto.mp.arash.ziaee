@@ -39,9 +39,9 @@ public abstract class Staff {
 		return getClass().getSimpleName() + "name=" + name + "\n";
 	}
 	
-	public abstract void join(String group);
+	public abstract void join(Staff group);
 	
-	public abstract void leave(String group);
+	public abstract void leave(Staff group);
 	
 	public abstract double calculateSalary();
 	

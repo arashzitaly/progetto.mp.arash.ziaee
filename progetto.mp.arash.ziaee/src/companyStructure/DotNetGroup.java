@@ -18,6 +18,10 @@ public final class DotNetGroup extends Developers {
 		this.level = level;
 		this.members = new ArrayList<>();
 	}
+	
+	public static DotNetBuilder newDotNetMember(String name, int level) {
+		return new DotNetBuilder(name, level);
+	}
 
 
 	public static class DotNetBuilder {
@@ -65,7 +69,7 @@ public final class DotNetGroup extends Developers {
 
 	@Override
 	public void printMember(StaffPrinter printer) {
-		printer.print("Name: " + getName() + "Level: " + level);
+		printer.print("Name: " + getName() + ", Level: " + getLevel());
 	}
 
 
@@ -93,11 +97,10 @@ public final class DotNetGroup extends Developers {
 
 	@Override
 	public String toString() {
-		return "DotNetGroup [" + super.toString() 
-        + ", Level: " + level + "\n"
-        + ", Primary Language: " + primaryLanguage + "\n"
-        + ", Years of Experience: " + yearsOfExperience + "\n"
-        + ", Members Count: " + members.size() + "]\n"; 	
+		return "[" + super.toString() 
+        		+ ", Level: " + level + "\n"
+        		+ ", Primary Language: " + primaryLanguage + "\n"
+        		+ ", Years of Experience: " + yearsOfExperience + "\n"; 	
 	}
 	
 	/*
@@ -126,7 +129,7 @@ public final class DotNetGroup extends Developers {
 			members.remove(newMember);
 		
 	}
-
+	
 	/*
 	 * for testing
 	 */
@@ -145,9 +148,7 @@ public final class DotNetGroup extends Developers {
 
 	List<Staff> getMembers() {
 		return members;
-	}
-	
-	
+	}	
 	
 	
 }

@@ -1,48 +1,90 @@
 package companyStructure;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Objects;
 
 import company.utils.print.StaffPrinter;
 
-public abstract class Developers extends Staff {
-	
-	private Collection<Staff> programmer = new ArrayList<>();
+public class Developers extends Staff {
+    
+    private String group;
+    private String contract;
+    private int yearsOfExperience;
 
-	protected Developers(String name) {
-		super(name);
-	}
-	
-	// Builder ToDo
-	
-	// Methods to manage child component
-	public void addProgrammer(Staff devs) {
-		if(devs != null)
-			programmer.add(devs);
-	}
-	
-	public void removeProgrammer(Staff devs) {
-		programmer.remove(devs);
-	}
+    private Developers(String name, String group) {
+        super(name);
+        this.group = group;
+    }
 
-	@Override
-    public abstract void join(Staff group);
+    
+    
+    public static DeveloperBuilder newDeveloper(String name, String group) {
+    	return new DeveloperBuilder(name, group);
+    }
+    
+    public static class DeveloperBuilder {
+        private String name;
+        private String group;
+        private String contractType = "Not Mentioned";
+        private Integer yearsOfExperience = 0;
+
+        public DeveloperBuilder(String name, String group) {
+            this.name = name;
+            this.group = group;
+        }
+
+        public DeveloperBuilder withContractType(String contractType) {
+            this.contractType = contractType;
+            return this;
+        }
+
+        public DeveloperBuilder withYearsOfExperience(int yearsOfExperience) {
+            this.yearsOfExperience = yearsOfExperience;
+            return this;
+        }
+
+        public Developers build() {
+            Developers developer = new Developers(this.name, this.group);
+            developer.setContract(contractType);
+            developer.setYearsOfExperience(yearsOfExperience);
+            return developer;
+        }
+    }
     
     @Override
-    public abstract void leave(Staff group);
+    public void join(Staff group) {
+        // Implementation logic
+    }
 
-    @Override
-    public abstract double calculateSalary();
-
-    @Override
-    public abstract void printMember(StaffPrinter printer);
 
 	@Override
+    public void leave(Staff group) {
+        // Implementation logic
+    }
+
+    @Override
+    public double calculateSalary() {
+       double baseSalary = 1400;
+       int experienceAdditional = 100;
+       double salary = baseSalary;
+       salary += this.yearsOfExperience * experienceAdditional;
+       return salary;
+    }
+
+    @Override
+    public void printMember(StaffPrinter printer) {
+        printer.print("Name: " + getName() 
+        						+ ", Group: " + group 
+        						+ ", Contract: " + contract 
+        						+ ", Years of Experience: " + yearsOfExperience);
+    }
+    
+    
+    
+    @Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(programmer);
+		result = prime * result + Objects.hash(yearsOfExperience);
 		return result;
 	}
 
@@ -55,7 +97,49 @@ public abstract class Developers extends Staff {
 		if (getClass() != obj.getClass())
 			return false;
 		Developers other = (Developers) obj;
-		return Objects.equals(programmer, other.programmer);
+		return yearsOfExperience == other.yearsOfExperience;
 	}
 
+	@Override
+	public String toString() {
+	    return "Developer [" + super.toString() 
+	           + ", Group: " + group + "\n"
+	           + ", Contract Type: " + contract + "\n"
+	           + ", Years of Experience: " + yearsOfExperience + "]";
+	}
+
+
+
+
+	/*
+     * private, for Builder Method
+     */
+	private void setContract(String contract) {
+		this.contract = contract;
+	}
+
+	private void setYearsOfExperience(int yearsOfExperience) {
+		this.yearsOfExperience = yearsOfExperience;
+	}
+
+
+	/*
+	 *  just for tests 
+	 */
+
+	public String getGroup() {
+		return group;
+	}
+
+
+	public String getContract() {
+		return contract;
+	}
+
+	public int getYearsOfExperience() {
+		return yearsOfExperience;
+	}
+
+    
+    
 }

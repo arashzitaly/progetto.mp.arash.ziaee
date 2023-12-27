@@ -1,17 +1,16 @@
 package companyStructure;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import java.util.Objects;
 import company.utils.print.StaffPrinter;
 
 public final class ProjectManager extends Staff {
 
-    private List<Developers> developers;
+    private Collection<Staff> groupMembers = new ArrayList<>();
 
     private ProjectManager(String name) {
         super(name);
-        this.developers = new ArrayList<>();
     }
 
     public static ProjectManagerBuilder newProjectManager(String name) {
@@ -20,21 +19,21 @@ public final class ProjectManager extends Staff {
 
     public static class ProjectManagerBuilder {
         private String name;
-        private List<Developers> developers;
+        private Collection<Staff> members;
 
         private ProjectManagerBuilder(String name) {
             this.name = name;
-            this.developers = new ArrayList<>();
+            this.members = new ArrayList<>();
         }
 
-        public ProjectManagerBuilder addDeveloper(Developers developer) {
-            this.developers.add(developer);
+        public ProjectManagerBuilder addMember(Staff member) {
+            this.members.add(member);
             return this;
         }
 
         public ProjectManager build() {
             ProjectManager projectManager = new ProjectManager(this.name);
-            projectManager.developers.addAll(this.developers);
+            projectManager.setMembers(this.members);
             return projectManager;
         }
     }
@@ -42,35 +41,22 @@ public final class ProjectManager extends Staff {
     @Override
     public void printMember(StaffPrinter printer) {
         printer.print("Project Manager: " + getName());
-        for (Developers developer : developers) {
-            developer.printMember(printer);
-        }
+         groupMembers.forEach(resource -> resource.printMember(printer));
+        
     }
 
     @Override
     public double calculateSalary() {
         double baseSalary = 3000;
         int bonusPerDeveloper = 150;
-        double salary = baseSalary + developers.size() * bonusPerDeveloper;
+        double salary = baseSalary + groupMembers.size() * bonusPerDeveloper;
         return salary;
     }
 
-    // Methods to manage developers
-    public void addDeveloper(Developers developer) {
-        developers.add(developer);
-    }
-
-    public void removeDeveloper(Developers developer) {
-        developers.remove(developer);
-    }
-
-    public List<Developers> getDevelopers() {
-        return new ArrayList<>(developers);
-    }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), developers);
+        return Objects.hash(super.hashCode(), groupMembers);
     }
 
     @Override
@@ -82,11 +68,57 @@ public final class ProjectManager extends Staff {
         if (getClass() != obj.getClass())
             return false;
         ProjectManager other = (ProjectManager) obj;
-        return Objects.equals(developers, other.developers);
+        return Objects.equals(groupMembers, other.groupMembers);
     }
 
     @Override
     public String toString() {
-        return "Project Manager [" + super.toString() + ", Developers Managed: " + developers.size() + "]";
+        return "Project Manager [" + super.toString() + ", Developers Managed: " + groupMembers.size() + "]";
     }
+    
+    
+    /*
+     * setter used inside the Builder class
+     */
+    
+    private void setMembers(Collection<Staff> members) {
+    	this.groupMembers = members;
+    }
+    
+    // Methods to manage developers
+    public void addMember(Staff developer) {
+        groupMembers.add(developer);
+    }
+
+    public void removeMember(Staff developer) {
+        groupMembers.remove(developer);
+    }
+
+    public Collection<Staff> getMember() {
+        return new ArrayList<>(groupMembers);
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

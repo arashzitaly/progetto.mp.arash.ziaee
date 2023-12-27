@@ -6,16 +6,14 @@ import company.utils.print.StaffPrinter;
 
 public class Developers extends Staff {
     
-    private String group;
+    private String workingGroup;
     private String contract;
     private int yearsOfExperience;
 
     private Developers(String name, String group) {
         super(name);
-        this.group = group;
+        this.workingGroup = group;
     }
-
-    
     
     public static DeveloperBuilder newDeveloper(String name, String group) {
     	return new DeveloperBuilder(name, group);
@@ -23,13 +21,13 @@ public class Developers extends Staff {
     
     public static class DeveloperBuilder {
         private String name;
-        private String group;
+        private String workingGroup;
         private String contractType = "Not Mentioned";
         private Integer yearsOfExperience = 0;
 
         public DeveloperBuilder(String name, String group) {
             this.name = name;
-            this.group = group;
+            this.workingGroup = group;
         }
 
         public DeveloperBuilder withContractType(String contractType) {
@@ -43,23 +41,13 @@ public class Developers extends Staff {
         }
 
         public Developers build() {
-            Developers developer = new Developers(this.name, this.group);
+            Developers developer = new Developers(this.name, this.workingGroup);
             developer.setContract(contractType);
             developer.setYearsOfExperience(yearsOfExperience);
             return developer;
         }
     }
-    
-    @Override
-    public void join(Staff group) {
-        // Implementation logic
-    }
 
-
-	@Override
-    public void leave(Staff group) {
-        // Implementation logic
-    }
 
     @Override
     public double calculateSalary() {
@@ -73,7 +61,7 @@ public class Developers extends Staff {
     @Override
     public void printMember(StaffPrinter printer) {
         printer.print("Name: " + getName() 
-        						+ ", Group: " + group 
+        						+ ", Group: " + workingGroup 
         						+ ", Contract: " + contract 
         						+ ", Years of Experience: " + yearsOfExperience);
     }
@@ -84,9 +72,10 @@ public class Developers extends Staff {
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(yearsOfExperience);
+		result = prime * result + Objects.hash(contract, workingGroup, yearsOfExperience);
 		return result;
 	}
+	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -97,18 +86,17 @@ public class Developers extends Staff {
 		if (getClass() != obj.getClass())
 			return false;
 		Developers other = (Developers) obj;
-		return yearsOfExperience == other.yearsOfExperience;
+		return Objects.equals(contract, other.contract) && Objects.equals(workingGroup, other.workingGroup)
+				&& yearsOfExperience == other.yearsOfExperience;
 	}
 
 	@Override
 	public String toString() {
 	    return "Developer [" + super.toString() 
-	           + ", Group: " + group + "\n"
+	           + ", Group: " + workingGroup + "\n"
 	           + ", Contract Type: " + contract + "\n"
 	           + ", Years of Experience: " + yearsOfExperience + "]";
 	}
-
-
 
 
 	/*
@@ -128,9 +116,8 @@ public class Developers extends Staff {
 	 */
 
 	public String getGroup() {
-		return group;
+		return workingGroup;
 	}
-
 
 	public String getContract() {
 		return contract;

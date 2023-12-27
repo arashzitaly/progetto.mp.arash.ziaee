@@ -36,7 +36,7 @@ public abstract class Staff {
 
 	@Override
 	public String toString() {
-		return getClass().getSimpleName() + "name=" + name + "\n";
+		return getClass().getSimpleName() + "Name=" + name + "\n";
 	}
 	
 	public abstract double calculateSalary();

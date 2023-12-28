@@ -112,6 +112,11 @@ public final class ProjectManager extends Staff {
     public Collection<Staff> getMembers() {
         return new ArrayList<>(groupMembers);
     }
+
+	public String getCurrentProject() {
+		return currentProject;
+	}
+    
     
     
     

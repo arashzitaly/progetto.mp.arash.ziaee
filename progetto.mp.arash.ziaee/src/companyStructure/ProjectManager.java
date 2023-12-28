@@ -3,11 +3,14 @@ package companyStructure;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
+import java.util.function.Consumer;
+
 import company.utils.print.StaffPrinter;
 
 public final class ProjectManager extends Staff {
 
     private Collection<Staff> groupMembers = new ArrayList<>();
+    private String currentProject;
 
     private ProjectManager(String name) {
         super(name);
@@ -40,9 +43,11 @@ public final class ProjectManager extends Staff {
 
     @Override
     public void printMember(StaffPrinter printer) {
-        printer.print("Project Manager: " + getName());
-         groupMembers.forEach(resource -> resource.printMember(printer));
-        
+        printer.print("Project Manager: " + getName() + ", Assigned Project: " + currentProject);
+        printer.print("Team Members:");
+        for (Staff member : groupMembers) {
+            printer.print(" - " + member.getName());
+        }
     }
 
     @Override
@@ -52,6 +57,16 @@ public final class ProjectManager extends Staff {
         double salary = baseSalary + groupMembers.size() * bonusPerDeveloper;
         return salary;
     }
+    
+    @Override
+	public void assignProject(String projectName) {
+    	this.currentProject = projectName;
+		/*this.currentProject = projectName;
+		for (Staff member : groupMembers)
+			member.assignProject(projectName);
+			This implementation assign a projet to each developer member
+			*/
+	}
 
 
     @Override
@@ -94,30 +109,9 @@ public final class ProjectManager extends Staff {
         groupMembers.remove(developer);
     }
 
-    public Collection<Staff> getMember() {
+    public Collection<Staff> getMembers() {
         return new ArrayList<>(groupMembers);
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     

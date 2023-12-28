@@ -41,6 +41,8 @@ public abstract class Staff {
 	
 	public abstract double calculateSalary();
 	
+	public abstract void assignProject(String projectName);
+	
 	public abstract void printMember(StaffPrinter printer);
 	
 	

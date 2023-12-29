@@ -41,7 +41,7 @@ public final class ProjectManager extends Staff {
 
     @Override
     public void printMember(StaffPrinter printer) {
-        printer.print("Project Manager: " + getName() + ", Assigned Project: " + currentProject);
+        printer.print("Project Manager: " + getName() + "\nAssigned Project: " + currentProject);
         printer.print("Team Members:");
         for (Staff member : groupMembers) {
             printer.print(" - " + member.getName());
@@ -86,7 +86,7 @@ public final class ProjectManager extends Staff {
 
     @Override
     public String toString() {
-        return "Project Manager [" + super.toString() + ", Developers Managed: " + groupMembers.size() + "]";
+        return "" + this.getName();
     }
     
     

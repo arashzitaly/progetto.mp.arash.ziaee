@@ -4,6 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import javax.annotation.processing.SupportedAnnotationTypes;
+
 import companyStructure.ProjectManager;
 import companyStructure.Staff;
 import companyStructure.Developers;
@@ -28,6 +30,7 @@ public class ProjectManagerTest {
     											.withYearsOfExperience(3)
     											.build())
     								.build();
+    	projectManager.assignProject("Pisa Rail Station");
     }
     
     
@@ -60,5 +63,43 @@ public class ProjectManagerTest {
         assertEquals(projectManager.calculateSalary(),
         		projectManager.calculateSalary(), 0.01);
     }
+    
+    @Test
+    public void testProjectManagerPrintMembers() {
+    	projectManager.printMember(printer);
+
+    	assertEquals( "Project Manager: Andrea Checcacci\n"+
+                "Assigned Project: Pisa Rail Station\n"+
+    			"Team Members:\n"+ 
+                " - Daniele Casebasse\n"+ 
+    			" - Alessio Taranto\n",
+                printer.toString());
+    }
+    
+    @Test
+    public void testToStringProjectManager() {
+    	assertEquals("Andrea Checcacci",
+    			projectManager.toString());
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

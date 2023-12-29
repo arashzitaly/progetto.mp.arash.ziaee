@@ -3,8 +3,6 @@ package companyStructure;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
-import java.util.function.Consumer;
-
 import company.utils.print.StaffPrinter;
 
 public final class ProjectManager extends Staff {
@@ -29,8 +27,8 @@ public final class ProjectManager extends Staff {
             this.members = new ArrayList<>();
         }
 
-        public ProjectManagerBuilder addMember(Staff member) {
-            this.members.add(member);
+        public ProjectManagerBuilder addMembers(Staff developer) {
+            this.members.add(developer);
             return this;
         }
 
@@ -100,17 +98,21 @@ public final class ProjectManager extends Staff {
     	this.groupMembers = members;
     }
     
-    // Methods to manage developers
-    public void addMember(Staff developer) {
+    
+    
+    /* 
+     * Methods to manage developers
+     */
+    public void addMembers(Staff developer) {
         groupMembers.add(developer);
     }
 
-    public void removeMember(Staff developer) {
+    public void removeMembers(Staff developer) {
         groupMembers.remove(developer);
     }
 
     public Collection<Staff> getMembers() {
-        return new ArrayList<>(groupMembers);
+        return groupMembers;
     }
 
 	public String getCurrentProject() {

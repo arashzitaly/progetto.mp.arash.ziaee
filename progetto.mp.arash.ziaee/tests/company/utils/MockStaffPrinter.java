@@ -14,9 +14,6 @@ public class MockStaffPrinter implements StaffPrinter{
 	@Override
 	public String toString() {
 		return builder.toString();
-	}
-	
-	
-
+	} 	
 	
 }

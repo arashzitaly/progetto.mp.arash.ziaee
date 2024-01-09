@@ -8,8 +8,11 @@ import company.utility.print.StaffPrinter;
 public class Developers extends Staff {
     
     private String workingGroup;
-    private String contract;
-    private int yearsOfExperience;
+    private String contract = "NOt Mentioned";
+    private int yearsOfExperience = 0;
+    
+    // Storing the assigned project
+    private String currentProject;
 
     private Developers(String name, String workinggroup) {
         super(name);
@@ -24,13 +27,11 @@ public class Developers extends Staff {
         private String name;
         private String workingGroup;
         private String contractType;
-        private Integer yearsOfExperience = 0;
+        private Integer yearsOfExperience;
 
         private DeveloperBuilder(String name, String group) {
             this.name = name;
             this.workingGroup = group;
-            contractType = "Not Mentioned";
-            this.yearsOfExperience = 0;
         }
 
         public DeveloperBuilder withContractType(String contractType) {
@@ -74,15 +75,21 @@ public class Developers extends Staff {
     	visitor.visitDeveloper(this);
     }
     
-    
     @Override
+	public void assignProject(String projectName) {
+		this.currentProject = projectName;		
+	}
+    
+    
+    
+
+	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
-		result = prime * result + Objects.hash(contract, workingGroup, yearsOfExperience);
+		result = prime * result + Objects.hash(contract, currentProject, workingGroup, yearsOfExperience);
 		return result;
 	}
-	
 
 	@Override
 	public boolean equals(Object obj) {
@@ -93,8 +100,8 @@ public class Developers extends Staff {
 		if (getClass() != obj.getClass())
 			return false;
 		Developers other = (Developers) obj;
-		return Objects.equals(contract, other.contract) && Objects.equals(workingGroup, other.workingGroup)
-				&& yearsOfExperience == other.yearsOfExperience;
+		return Objects.equals(contract, other.contract) && Objects.equals(currentProject, other.currentProject)
+				&& Objects.equals(workingGroup, other.workingGroup) && yearsOfExperience == other.yearsOfExperience;
 	}
 
 	@Override
@@ -102,7 +109,8 @@ public class Developers extends Staff {
 	    return "Developer [" + super.toString() 
 	           + ", Group: " + workingGroup + "\n"
 	           + ", Contract Type: " + contract + "\n"
-	           + ", Years of Experience: " + yearsOfExperience + "]";
+	           + ", Years of Experience: " + yearsOfExperience + "\n"
+	           + ", Current Project: " + currentProject + "]";
 	}
 
 
@@ -133,12 +141,11 @@ public class Developers extends Staff {
 	public int getYearsOfExperience() {
 		return yearsOfExperience;
 	}
-
-	@Override
-	public void assignProject(String projectName) {
-		// TODO Auto-generated method stub
-		
+	
+	public String getCurrentProject() {
+	    return currentProject;
 	}
+
 
     
     

@@ -37,4 +37,5 @@ public class DevelopersTest {
 		assertEquals(expectedOutput, printer.toString().trim());
 	}
 
+
 }

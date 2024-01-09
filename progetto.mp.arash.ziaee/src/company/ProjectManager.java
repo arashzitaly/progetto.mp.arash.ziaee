@@ -63,11 +63,8 @@ public final class ProjectManager extends Staff {
     @Override
 	public void assignProject(String projectName) {
     	this.currentProject = projectName;
-		/*this.currentProject = projectName;
-		for (Staff member : groupMembers)
-			member.assignProject(projectName);
-			This implementation assign a projet to each developer member
-			*/
+    	for (Staff member : projectMembers)
+    		member.assignProject(projectName);
 	}
     
     @Override

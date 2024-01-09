@@ -1,8 +1,9 @@
-package companyStructure;
+package company;
 
 import java.util.Objects;
 
-import company.utils.print.StaffPrinter;
+import company.utility.StaffVisitor;
+import company.utility.print.StaffPrinter;
 
 public class Developers extends Staff {
     
@@ -10,9 +11,9 @@ public class Developers extends Staff {
     private String contract;
     private int yearsOfExperience;
 
-    private Developers(String name, String group) {
+    private Developers(String name, String workinggroup) {
         super(name);
-        this.workingGroup = group;
+        this.workingGroup = workinggroup;
     }
     
     public static DeveloperBuilder newDeveloper(String name, String group) {
@@ -22,12 +23,14 @@ public class Developers extends Staff {
     public static class DeveloperBuilder {
         private String name;
         private String workingGroup;
-        private String contractType = "Not Mentioned";
+        private String contractType;
         private Integer yearsOfExperience = 0;
 
-        public DeveloperBuilder(String name, String group) {
+        private DeveloperBuilder(String name, String group) {
             this.name = name;
             this.workingGroup = group;
+            contractType = "Not Mentioned";
+            this.yearsOfExperience = 0;
         }
 
         public DeveloperBuilder withContractType(String contractType) {
@@ -66,6 +69,10 @@ public class Developers extends Staff {
         						+ ", Years of Experience: " + yearsOfExperience);
     }
     
+    @Override
+    public void accept(StaffVisitor visitor) {
+    	visitor.visitDeveloper(this);
+    }
     
     
     @Override

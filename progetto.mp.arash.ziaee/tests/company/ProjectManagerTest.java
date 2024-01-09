@@ -1,4 +1,4 @@
-package company.structure;
+package company;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -6,11 +6,11 @@ import static org.junit.Assert.*;
 
 import javax.annotation.processing.SupportedAnnotationTypes;
 
-import companyStructure.ProjectManager;
-import companyStructure.Staff;
-import companyStructure.Developers;
-import company.utils.MockStaffPrinter;
-import company.utils.print.StaffPrinter;
+import company.Developers;
+import company.ProjectManager;
+import company.Staff;
+import company.utility.MockStaffPrinter;
+import company.utility.print.StaffPrinter;
 
 public class ProjectManagerTest {
 

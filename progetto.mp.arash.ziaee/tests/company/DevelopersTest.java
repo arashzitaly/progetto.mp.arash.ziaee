@@ -1,12 +1,12 @@
-package company.structure;
+package company;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import company.utils.MockStaffPrinter;
-import companyStructure.Developers;
+import company.Developers;
+import company.utility.MockStaffPrinter;
 
 public class DevelopersTest {
 

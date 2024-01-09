@@ -1,6 +1,6 @@
-package company.utils;
+package company.utility;
 
-import company.utils.print.StaffPrinter;
+import company.utility.print.StaffPrinter;
 
 public class MockStaffPrinter implements StaffPrinter{
 

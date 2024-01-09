@@ -1,8 +1,9 @@
-package companyStructure;
+package company;
 
 import java.util.Objects;
 
-import company.utils.print.StaffPrinter;
+import company.utility.StaffVisitor;
+import company.utility.print.StaffPrinter;
 
 public abstract class Staff {
 
@@ -44,6 +45,8 @@ public abstract class Staff {
 	public abstract void assignProject(String projectName);
 	
 	public abstract void printMember(StaffPrinter printer);
+	
+	public abstract void accept(StaffVisitor visitor);
 	
 	
 }

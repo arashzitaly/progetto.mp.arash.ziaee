@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 import company.utility.StaffVisitor;
 import company.utility.print.StaffPrinter;
 
 public final class ProjectManager extends Staff {
 
-    private Collection<Staff> developersMember = new ArrayList<>();
+    private Collection<Staff> projectMembers = new ArrayList<>();
     private String currentProject;
 
     private ProjectManager(String name) {
@@ -46,7 +47,7 @@ public final class ProjectManager extends Staff {
     public void printMember(StaffPrinter printer) {
         printer.print("Project Manager: " + getName() + "\nAssigned Project: " + currentProject);
         printer.print("Team Members:");
-        for (Staff member : developersMember) {
+        for (Staff member : projectMembers) {
             printer.print(" - " + member.getName());
         }
     }
@@ -55,7 +56,7 @@ public final class ProjectManager extends Staff {
     public double calculateSalary() {
         double baseSalary = 3000;
         int bonusPerDeveloper = 150;
-        double salary = baseSalary + developersMember.size() * bonusPerDeveloper;
+        double salary = baseSalary + projectMembers.size() * bonusPerDeveloper;
         return salary;
     }
     
@@ -75,13 +76,17 @@ public final class ProjectManager extends Staff {
     }
     
     public Iterator<Staff> iterator(){
-    	return developersMember.iterator();
+    	return projectMembers.iterator();
     }
-
+    
+    public void applyOnDevelopers(Consumer<Staff> function) {
+    	projectMembers.forEach(function);
+    }
+    
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), developersMember);
+        return Objects.hash(super.hashCode(), projectMembers);
     }
 
     @Override
@@ -93,7 +98,7 @@ public final class ProjectManager extends Staff {
         if (getClass() != obj.getClass())
             return false;
         ProjectManager other = (ProjectManager) obj;
-        return Objects.equals(developersMember, other.developersMember);
+        return Objects.equals(projectMembers, other.projectMembers);
     }
 
     @Override
@@ -107,7 +112,7 @@ public final class ProjectManager extends Staff {
      */
     
     private void setMembers(Collection<Staff> members) {
-    	this.developersMember = members;
+    	this.projectMembers = members;
     }
     
     
@@ -116,15 +121,15 @@ public final class ProjectManager extends Staff {
      * Methods to manage developers
      */
     public void addMembers(Staff developer) {
-        developersMember.add(developer);
+        projectMembers.add(developer);
     }
 
     public void removeMembers(Staff developer) {
-        developersMember.remove(developer);
+        projectMembers.remove(developer);
     }
 
     public Collection<Staff> getMembers() {
-        return developersMember;
+        return projectMembers;
     }
 
 	public String getCurrentProject() {

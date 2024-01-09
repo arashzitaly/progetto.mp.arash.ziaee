@@ -2,7 +2,6 @@ package company.payment;
 
 import company.Developers;
 import company.ProjectManager;
-import company.Staff;
 import company.utility.StaffVisitor;
 
 public class PayCheckCalculatorVisitor implements StaffVisitor {
@@ -27,6 +26,7 @@ public class PayCheckCalculatorVisitor implements StaffVisitor {
 	@Override
 	public void visitProjectManager(ProjectManager projectManager) {
 		this.payment.renderPayCheck(projectManager, projectManager.calculateSalary());
+		projectManager.applyOnDevelopers(dev -> dev.accept(this));
 	}
 
 }

@@ -106,11 +106,11 @@ public class Developers extends Staff {
 
 	@Override
 	public String toString() {
-	    return "Developer [" + super.toString() 
+	    return "[" + super.toString() 
 	           + ", Group: " + workingGroup + "\n"
 	           + ", Contract Type: " + contract + "\n"
 	           + ", Years of Experience: " + yearsOfExperience + "\n"
-	           + ", Current Project: " + currentProject + "]";
+	           + ", Current Project: " + currentProject + "]\n";
 	}
 
 

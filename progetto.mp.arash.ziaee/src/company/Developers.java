@@ -80,8 +80,6 @@ public class Developers extends Staff {
 		this.currentProject = projectName;		
 	}
     
-    
-    
 
 	@Override
 	public int hashCode() {

@@ -26,7 +26,7 @@ public class DevelopersTest {
     }
 
     @Test
-    public void testPrintMember() {
+    public void testDeveloperPrintMember() {
         MockStaffPrinter printer = new MockStaffPrinter();
         developers.printMember(printer);
 
@@ -35,20 +35,20 @@ public class DevelopersTest {
     }
 
     @Test
-    public void testCalculateSalary() {
+    public void testDeveloperCalculateSalary() {
         double expectedSalary = 1400 + 3 * 100;
         assertEquals(expectedSalary, developers.calculateSalary(), 0.01);
     }
 
     @Test
-    public void testAssignProject() {
+    public void testDeveloperAssignProject() {
         String projectName = "Project X";
         developers.assignProject(projectName);
         assertEquals(projectName, developers.getCurrentProject());
     }
     
     @Test
-    public void testToStringMethod() {
+    public void testDeveloperToString() {
         String expectedOutput = "[Developers Name = Alessio Taranto\n"
                                 + ", Group: .Net\n"
                                 + ", Contract Type: Aprendistato\n"

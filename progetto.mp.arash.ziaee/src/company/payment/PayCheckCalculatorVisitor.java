@@ -7,20 +7,17 @@ import company.utility.StaffVisitor;
 public class PayCheckCalculatorVisitor implements StaffVisitor {
 	
 	private PayingSystem payment;
-	
-	
+		
 
 	public PayCheckCalculatorVisitor(PayingSystem payment) {
 		this.payment = payment;
 	}
 
 
-
 	@Override
 	public void visitDeveloper(Developers developers) {
 		this.payment.renderPayCheck(developers, developers.calculateSalary());
 	}
-
 
 
 	@Override

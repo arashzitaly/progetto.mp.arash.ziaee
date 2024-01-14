@@ -24,6 +24,20 @@ public class DevelopersTest {
         assertEquals("Aprendistato", developers.getContract());
         assertEquals(3, developers.getYearsOfExperience());
     }
+    
+    @Test
+    public void testDeveloperBuilderWithoutOptionalParameters() {
+    	developers = Developers.newDeveloper("Marco Bianchi", "Java")
+                                         .build();
+    	
+        assertEquals("[Developers Name = Marco Bianchi\n"
+                + ", Group: Java\n"
+                + ", Contract Type: Not Mentioned\n"
+                + ", Years of Experience: 0\n"       
+                + ", Current Project: null]\n",
+                developers.toString() );
+    }
+
 
     @Test
     public void testDeveloperPrintMember() {

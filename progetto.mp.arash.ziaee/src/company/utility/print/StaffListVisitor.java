@@ -9,6 +9,10 @@ import company.utility.StaffVisitor;
 
 public class StaffListVisitor implements StaffVisitor{
 
+	
+	/*
+	 * caso di un superiore una stampa di nome di tale oggetto e pure il nome di tutti i suoi figli ricorsivamente
+	 */
 	private StaffPrinter printer;
 	
 	public StaffListVisitor(StaffPrinter printer) {

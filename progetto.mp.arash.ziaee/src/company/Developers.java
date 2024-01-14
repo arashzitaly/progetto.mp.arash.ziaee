@@ -8,8 +8,8 @@ import company.utility.print.StaffPrinter;
 public class Developers extends Staff {
     
     private String workingGroup;
-    private String contract = "NOt Mentioned";
-    private int yearsOfExperience = 0;
+    private String contract;
+    private int yearsOfExperience;
     
     // Storing the assigned project
     private String currentProject;
@@ -26,8 +26,8 @@ public class Developers extends Staff {
     public static class DeveloperBuilder {
         private String name;
         private String workingGroup;
-        private String contractType;
-        private Integer yearsOfExperience;
+        private String contractType = "Not Mentioned";
+        private Integer yearsOfExperience  = 0;
 
         private DeveloperBuilder(String name, String group) {
             this.name = name;

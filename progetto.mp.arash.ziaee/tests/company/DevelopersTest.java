@@ -44,8 +44,8 @@ public class DevelopersTest {
         MockStaffPrinter printer = new MockStaffPrinter();
         developers.printMember(printer);
 
-        String expectedOutput = "Name: Alessio Taranto, Group: .Net, Contract: Aprendistato, Years of Experience: 3\n";
-        assertEquals(expectedOutput, printer.toString());
+        assertEquals("Name: Alessio Taranto, Group: .Net, Contract: Aprendistato, Years of Experience: 3\n",
+        		printer.toString());
     }
 
     @Test

@@ -31,8 +31,8 @@ public final class ProjectManager extends Staff {
             this.members = new ArrayList<>();
         }
 
-        public ProjectManagerBuilder addMembers(Staff developer) {
-            this.members.add(developer);
+        public ProjectManagerBuilder addWorkingMembers(Staff memebersOfGroup) {
+            this.members.add(memebersOfGroup);
             return this;
         }
 

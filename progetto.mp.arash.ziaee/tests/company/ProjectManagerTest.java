@@ -1,6 +1,12 @@
 package company;
 
 import static org.junit.Assert.*;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import org.junit.Before;
 import org.junit.Test;
 import company.utility.MockStaffPrinter;
@@ -85,9 +91,60 @@ public class ProjectManagerTest {
     public void testProjectManagerToString() {
         assertEquals("Ettore Etenzi", projectManager.toString());
     }
+    
+    @Test
+    public void testIteratorProjectManager() {
+        Iterator<Staff> iterator = projectManager.iterator();
+        assertNotNull(iterator);
 
+        Set<String> foundMemberNames = new HashSet<>();
 
+        while (iterator.hasNext()) {
+            Staff member = iterator.next();
+            foundMemberNames.add(member.getName());
+        }
 
+        Set<String> expectedNames = new HashSet<>(Arrays.asList("Eugenio Ganghereti", "Luca Gualandi", "Fabio Checcacci"));
+        assertEquals(expectedNames, foundMemberNames);
+    }
+    
+    @Test
+    public void testAddMembers() {
+        Developers newDeveloper = Developers.newDeveloper("Giovanni Verdi", "BLOCKCHAIN")
+                                            .withContractType("PartTime")
+                                            .build();
+        
+        int sizeBeforeAdd = projectManager.getMembers().size();
+        projectManager.addMembers(newDeveloper);
+        
+        int sizeAfterAdd = projectManager.getMembers().size();
+        
+        assertEquals(sizeBeforeAdd + 1, sizeAfterAdd);
+        assertTrue(projectManager.getMembers().contains(newDeveloper));
+    }
+
+    /*
+	 * Helper method for testing removeMemeber method
+	 */
+	private Staff findMemberByName(String name) {
+	    for (Staff member : projectManager.getMembers()) {
+	        if (member.getName().equals(name)) {
+	            return member;
+	        }
+	    }
+	    return null;
+	}
+    @Test
+    public void testRemoveMembers() {
+        Staff existingMember = findMemberByName("Fabio Checcacci");
+        assertNotNull(existingMember);
+
+        int originalSize = projectManager.getMembers().size();
+        projectManager.removeMembers(existingMember);
+
+        assertEquals(originalSize - 1, projectManager.getMembers().size());
+        assertFalse(projectManager.getMembers().contains(existingMember));
+    }
     
 
 }

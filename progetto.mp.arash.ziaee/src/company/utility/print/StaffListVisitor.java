@@ -21,12 +21,16 @@ public class StaffListVisitor implements StaffVisitor{
 
 	@Override
 	public void visitDeveloper(Developers developers) {
-		printer.print("Developer Name : " + developers.getName());
+	    printer.print("Developer Name : " + developers.getName() 
+	                  + ", Group: " + developers.getGroup() 
+	                  + ", Years of Experience: " + developers.getYearsOfExperience());
 	}
+
 
 	@Override
 	public void visitProjectManager(ProjectManager projectManager) {
-		printer.print("Project Manager Name : " + projectManager.getName());
+		printer.print("Project Manager Name : " + projectManager.getName()
+						+ ", Project :" + projectManager.getCurrentProject());
 		Iterator<Staff> iterator = projectManager.iterator();
 		while(iterator.hasNext()) {
 			iterator.next().accept(this);

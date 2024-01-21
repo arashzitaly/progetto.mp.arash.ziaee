@@ -2,7 +2,7 @@ package company.payment;
 
 import company.Developers;
 import company.ProjectManager;
-import company.utility.StaffVisitor;
+import company.visitor.StaffVisitor;
 
 public class PayCheckCalculatorVisitor implements StaffVisitor {
 	

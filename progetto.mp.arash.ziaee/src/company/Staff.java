@@ -2,8 +2,8 @@ package company;
 
 import java.util.Objects;
 
-import company.utility.StaffVisitor;
 import company.utility.print.StaffPrinter;
+import company.visitor.StaffVisitor;
 
 public abstract class Staff {
 

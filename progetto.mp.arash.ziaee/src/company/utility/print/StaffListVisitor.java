@@ -5,7 +5,7 @@ import java.util.Iterator;
 import company.Developers;
 import company.ProjectManager;
 import company.Staff;
-import company.utility.StaffVisitor;
+import company.visitor.StaffVisitor;
 
 public class StaffListVisitor implements StaffVisitor{
 

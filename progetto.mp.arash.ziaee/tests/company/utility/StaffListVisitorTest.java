@@ -30,25 +30,43 @@ public class StaffListVisitorTest {
         assertEquals("Developer Name : Tania Bruno, Group: Front-End, Years of Experience: 3\n",
         		printer.toString());
     }
+    
+    @Test
+    public void testVisitSoloProjectManager() {
+        String projectName = "Misericordia Firenze";
+        ProjectManager soloManager = ProjectManager.newProjectManager("Franklin Tavarez").build();
+        soloManager.assignProject(projectName);
+        soloManager.accept(visitor);
 
+        assertEquals("Project Manager Name : Franklin Tavarez, Project : Misericordia Firenze\n",
+        		printer.toString());
+    }
 
     @Test
     public void testVisitProjectManagerWithDevelopers() {
         String projectName = "Open Source Optimization";
+        ProjectManager softWareEngineer = ProjectManager.newProjectManager("Eugenio Ganghereti")
+                .build();
+        
         ProjectManager manager = ProjectManager.newProjectManager("Ettore Etenzi")
-                                               .addWorkingMembers(Developers.newDeveloper("Luca Gualandi", "BLOCKCHAIN")
+        									   .addWorkingMembers(softWareEngineer)
+                                               .addWorkingMembers(Developers.newDeveloper("Luca Gualandi",
+                                            		   				"BLOCKCHAIN")
                                                                      .withYearsOfExperience(0)
                                                                      .build())
-                                               .addWorkingMembers(Developers.newDeveloper("Fabio Checcacci", "SQL")
+                                               .addWorkingMembers(Developers.newDeveloper("Fabio Checcacci",
+                                            		   				"SQL")
                                                                      .withYearsOfExperience(0)
                                                                      .build())
                                                .build();
         manager.assignProject(projectName);
         manager.accept(visitor);
 
-        assertEquals("Project Manager Name : Ettore Etenzi, Project :Open Source Optimization\n" +
+        assertEquals("Project Manager Name : Ettore Etenzi, Project : Open Source Optimization\n" +
+        		"Project Manager Name : Eugenio Ganghereti, Project : Open Source Optimization\n"+
                 "Developer Name : Luca Gualandi, Group: BLOCKCHAIN, Years of Experience: 0\n" +
-                "Developer Name : Fabio Checcacci, Group: SQL, Years of Experience: 0\n", printer.toString());
+                "Developer Name : Fabio Checcacci, Group: SQL, Years of Experience: 0\n",
+                printer.toString());
     }
 
 

@@ -42,6 +42,7 @@ public final class ProjectManager extends Staff {
             return projectManager;
         }
     }
+    
 
     @Override
     public void printMember(StaffPrinter printer) {

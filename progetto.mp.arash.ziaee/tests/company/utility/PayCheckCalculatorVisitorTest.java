@@ -52,5 +52,59 @@ public class PayCheckCalculatorVisitorTest {
 		assertEquals(manager.calculateSalary(),
 				payingSystem.getSalary(manager), 0.01);
 	}
+	
+	@Test
+	public void testRecursivePaymentForProjectManagersAndDevelopers() {
+	    Developers seniorDeveloper = Developers.newDeveloper("Marco Bianchi", "UI/UX")
+	                                      .withYearsOfExperience(3)
+	                                      .build();
+	    Developers juniorDeveloper = Developers.newDeveloper("Laura Neri", "Swift")
+	                                      .withYearsOfExperience(1)
+	                                      .build();
+
+	    ProjectManager juniorManager = ProjectManager.newProjectManager("Giulia Verdi")
+	                                              .addWorkingMembers(seniorDeveloper)
+	                                              .build();
+
+	    ProjectManager seniorManager = ProjectManager.newProjectManager("Giovanni Rossi")
+	                                                 .addWorkingMembers(juniorManager)
+	                                                 .addWorkingMembers(juniorDeveloper)
+	                                                 .build();
+
+	    seniorManager.accept(salaryVisitor);
+
+	    assertEquals(seniorManager.calculateSalary(),
+	                 payingSystem.getSalary(seniorManager), 0.01);
+	    assertEquals(juniorManager.calculateSalary(),
+	                 payingSystem.getSalary(juniorManager), 0.01);
+	    assertEquals(seniorDeveloper.calculateSalary(),
+	                 payingSystem.getSalary(seniorDeveloper), 0.01);
+	    assertEquals(juniorDeveloper.calculateSalary(),
+	                 payingSystem.getSalary(juniorDeveloper), 0.01);
+	}
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

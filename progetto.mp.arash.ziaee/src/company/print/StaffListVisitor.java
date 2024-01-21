@@ -1,4 +1,4 @@
-package company.utility.print;
+package company.print;
 
 import java.util.Iterator;
 

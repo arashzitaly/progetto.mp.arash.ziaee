@@ -1,4 +1,4 @@
-package company.utility.print;
+package company.print;
 
 public interface StaffPrinter {
 

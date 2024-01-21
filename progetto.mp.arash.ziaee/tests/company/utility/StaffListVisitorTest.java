@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import company.Developers;
 import company.ProjectManager;
-import company.utility.print.StaffListVisitor;
+import company.print.StaffListVisitor;
 import company.visitor.StaffVisitor;
 
 public class StaffListVisitorTest {

@@ -6,7 +6,7 @@ import java.util.Iterator;
 import java.util.Objects;
 import java.util.function.Consumer;
 
-import company.utility.print.StaffPrinter;
+import company.print.StaffPrinter;
 import company.visitor.StaffVisitor;
 
 public final class ProjectManager extends Staff {

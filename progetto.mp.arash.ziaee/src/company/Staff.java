@@ -48,5 +48,4 @@ public abstract class Staff {
 	
 	public abstract void accept(StaffVisitor visitor);
 	
-	
 }

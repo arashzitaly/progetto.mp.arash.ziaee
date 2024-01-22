@@ -11,11 +11,12 @@ public class Developers extends Staff {
     private String contract;
     private int yearsOfExperience;
     
+    // Storing the assigned project
     private String currentProject;
 
-    private Developers(String name, String workingGroup) {
+    private Developers(String name, String workinggroup) {
         super(name);
-        this.workingGroup = workingGroup;
+        this.workingGroup = workinggroup;
     }
     
     public static DeveloperBuilder newDeveloper(String name, String group) {

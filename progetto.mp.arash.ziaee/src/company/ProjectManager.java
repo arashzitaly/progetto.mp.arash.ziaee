@@ -119,12 +119,12 @@ public final class ProjectManager extends Staff {
     /* 
      * Methods to manage developers
      */
-    public void addMembers(Staff developer) {
-        projectMembers.add(developer);
+    public void addMembers(Collection<Staff> developer) {
+        this.projectMembers.addAll(developer);
     }
 
-    public void removeMembers(Staff developer) {
-        projectMembers.remove(developer);
+    public void removeMembers(Collection<Staff> developer) {
+        this.projectMembers.removeAll(developer);
     }
 
     public Collection<Staff> getMembers() {

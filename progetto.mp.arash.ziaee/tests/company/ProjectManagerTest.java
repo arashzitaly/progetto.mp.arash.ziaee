@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Before;
@@ -115,7 +116,9 @@ public class ProjectManagerTest {
                                             .build();
         
         int sizeBeforeAdd = projectManager.getMembers().size();
-        projectManager.addMembers(newDeveloper);
+        
+        List<Staff> newMembers = Arrays.asList(newDeveloper);
+        projectManager.addMembers(newMembers);
         
         int sizeAfterAdd = projectManager.getMembers().size();
         
@@ -140,7 +143,8 @@ public class ProjectManagerTest {
         assertNotNull(existingMember);
 
         int originalSize = projectManager.getMembers().size();
-        projectManager.removeMembers(existingMember);
+        List<Staff> toBeRemovedMember = Arrays.asList(existingMember);
+        projectManager.removeMembers(toBeRemovedMember);
 
         assertEquals(originalSize - 1, projectManager.getMembers().size());
         assertFalse(projectManager.getMembers().contains(existingMember));

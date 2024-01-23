@@ -48,10 +48,11 @@ public final class ProjectManager extends Staff {
     public void printMember(StaffPrinter printer) {
         printer.print("Project Manager: " + getName() + "\nAssigned Project: " + currentProject);
         printer.print("Team Members:");
-        for (Staff member : projectMembers) {
-            printer.print(" - " + member.getName());
-        }
+        projectMembers.stream()
+                      .map(member -> " - " + member.getName())
+                      .forEach(printer::print);
     }
+
 
     @Override
     public double calculateSalary() {
@@ -62,11 +63,11 @@ public final class ProjectManager extends Staff {
     }
     
     @Override
-	public void assignProject(String projectName) {
-    	this.currentProject = projectName;
-    	for (Staff member : projectMembers)
-    		member.assignProject(projectName);
-	}
+    public void assignProject(String projectName) {
+        this.currentProject = projectName;
+        projectMembers.forEach(member -> member.assignProject(projectName));
+    }
+
     
     @Override
     public void accept(StaffVisitor visitor) {

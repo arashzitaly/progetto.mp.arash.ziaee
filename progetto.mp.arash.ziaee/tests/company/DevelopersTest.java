@@ -26,7 +26,7 @@ public class DevelopersTest {
     }
     
     @Test
-    public void testDeveloperBuilderWithoutOptionalParameters() {
+    public void testDeveloperBuilderWithOutOptionalParameters() {
     	developers = Developers.newDeveloper("Marco Bianchi", "Java")
                                          .build();
     	

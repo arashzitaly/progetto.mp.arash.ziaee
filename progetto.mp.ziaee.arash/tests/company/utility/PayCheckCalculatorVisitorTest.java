@@ -81,30 +81,6 @@ public class PayCheckCalculatorVisitorTest {
 	                 payingSystem.getSalary(seniorDeveloper), 0.01);
 	    assertEquals(juniorDeveloper.calculateSalary(),
 	                 payingSystem.getSalary(juniorDeveloper), 0.01);
-	}
-
-
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	}	
 
 }

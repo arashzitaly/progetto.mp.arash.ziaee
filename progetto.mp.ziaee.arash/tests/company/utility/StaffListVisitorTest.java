@@ -69,23 +69,6 @@ public class StaffListVisitorTest {
                 "Developer Name : Fabio Checcacci, Group: SQL, Years of Experience: 0\n",
                 printer.toString());
     }
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     
 }

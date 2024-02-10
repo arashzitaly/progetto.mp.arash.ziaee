@@ -126,17 +126,7 @@ public class ProjectManagerTest {
         assertTrue(projectManager.getMembers().contains(newDeveloper));
     }
 
-    /*
-	 * Helper method for testing removeMemeber method
-	 */
-	private Staff findMemberByName(String name) {
-	    for (Staff member : projectManager.getMembers()) {
-	        if (member.getName().equals(name)) {
-	            return member;
-	        }
-	    }
-	    return null;
-	}
+    
     @Test
     public void testRemoveMembers() {
         Staff existingMember = findMemberByName("Fabio Checcacci");
@@ -149,6 +139,18 @@ public class ProjectManagerTest {
         assertEquals(originalSize - 1, projectManager.getMembers().size());
         assertFalse(projectManager.getMembers().contains(existingMember));
     }
+    
+    /*
+	 * Helper method for testing removeMemeber method
+	 */
+	private Staff findMemberByName(String name) {
+	    for (Staff member : projectManager.getMembers()) {
+	        if (member.getName().equals(name)) {
+	            return member;
+	        }
+	    }
+	    return null;
+	}
     
 
 }

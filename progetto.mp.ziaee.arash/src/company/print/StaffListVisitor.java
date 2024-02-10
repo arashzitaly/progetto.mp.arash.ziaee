@@ -22,7 +22,6 @@ public class StaffListVisitor implements StaffVisitor{
 	                  + ", Years of Experience: " + developers.getYearsOfExperience());
 	}
 
-
 	@Override
 	public void visitProjectManager(ProjectManager projectManager) {
 		printer.print("Project Manager Name : " + projectManager.getName()

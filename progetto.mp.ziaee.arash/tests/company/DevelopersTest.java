@@ -70,11 +70,6 @@ public class DevelopersTest {
                                 + ", Current Project: null]\n";
         assertEquals(expectedOutput, developers.toString());
     }
-
-
-    
-    
-    
-    
+ 
     
 }

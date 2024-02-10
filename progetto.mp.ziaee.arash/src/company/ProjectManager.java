@@ -112,9 +112,7 @@ public final class ProjectManager extends Staff {
     
     private void setMembers(Collection<Staff> members) {
     	this.projectMembers = members;
-    }
-    
-    
+    }  
     
     /* 
      * Methods to manage developers
@@ -134,9 +132,6 @@ public final class ProjectManager extends Staff {
 	public String getCurrentProject() {
 		return currentProject;
 	}
-
-    
-    
-    
+ 
     
 }
